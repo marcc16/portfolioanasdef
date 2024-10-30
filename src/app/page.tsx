@@ -3,7 +3,6 @@
 import me from "@/assets/me.png";
 import { H1 } from "@/components/ui/H1";
 import { Bot, Brain, Workflow, Building2, Download } from "lucide-react";
-import { Metadata } from "next";
 import Image from "next/image";
 import {
   Card,
@@ -158,7 +157,7 @@ export default function Home() {
                   <DialogTrigger asChild>
                     <div className="cursor-pointer overflow-hidden rounded-lg border">
                       <Image
-                        src="/make-dieta.png"
+                        src="/make-dieta.PNG"
                         alt="Flujo de automatización de dietas"
                         width={800}
                         height={400}
@@ -174,7 +173,7 @@ export default function Home() {
                       </DialogDescription>
                     </DialogHeader>
                     <Image
-                      src="/make-dieta.png"
+                      src="/make-dieta.PNG"
                       alt="Flujo de automatización de dietas"
                       width={1200}
                       height={800}
@@ -213,7 +212,7 @@ export default function Home() {
                   <DialogTrigger asChild>
                     <div className="cursor-pointer overflow-hidden rounded-lg border">
                       <Image
-                        src="/make-llamadas.png"
+                        src="/make-llamadas.PNG"
                         alt="Flujo de evaluación de llamadas"
                         width={800}
                         height={400}
@@ -229,7 +228,7 @@ export default function Home() {
                       </DialogDescription>
                     </DialogHeader>
                     <Image
-                      src="/make-llamadas.png"
+                      src="/make-llamadas.PNG"
                       alt="Flujo de evaluación de llamadas"
                       width={1200}
                       height={800}
