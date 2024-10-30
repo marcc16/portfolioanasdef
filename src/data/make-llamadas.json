@@ -1,0 +1,1938 @@
+{
+    "name": "auto Dani",
+    "flow": [
+        {
+            "id": 3,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 512129,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "demo"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "record_id",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "airtable:ActionGetRecord",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 1517439
+            },
+            "mapper": {
+                "id": "{{3.record_id}}",
+                "base": "appYN4Y8P1RidLDvw",
+                "table": "tbl2gfWs30t8cA3Ts",
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 271,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "DanicoachAI"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "gestion de sesiones"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable2"
+                            },
+                            "label": "demo"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Analizar",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Analizar"
+                    },
+                    {
+                        "name": "sesion",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "sesion"
+                    },
+                    {
+                        "name": "transcripcion",
+                        "type": "text",
+                        "label": "transcripcion",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Explicacion cumplimiento",
+                        "type": "text",
+                        "label": "Explicacion cumplimiento",
+                        "multiline": true
+                    },
+                    {
+                        "name": "estado",
+                        "type": "text",
+                        "label": "estado"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 8,
+            "module": "airtable:ActionUpdateRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 1517439
+            },
+            "mapper": {
+                "id": "{{3.record_id}}",
+                "base": "appYN4Y8P1RidLDvw",
+                "table": "tbl2gfWs30t8cA3Ts",
+                "record": {
+                    "fldc6xnVPJIdIVBYn": "sin procesar"
+                },
+                "typecast": false,
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 497,
+                    "y": -2
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "DanicoachAI"
+                        },
+                        "table": {
+                            "label": "gestion de sesiones"
+                        },
+                        "record": {
+                            "nested": {
+                                "fldbOVQ7sYQJ6VTpP": {
+                                    "mode": "chose"
+                                },
+                                "fldc6xnVPJIdIVBYn": {
+                                    "mode": "chose",
+                                    "label": "sin procesar"
+                                }
+                            }
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable2"
+                            },
+                            "label": "demo"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fldqIsRxBom8jSeed",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "fldbOVQ7sYQJ6VTpP",
+                                "spec": [
+                                    {
+                                        "name": "url",
+                                        "type": "text",
+                                        "label": "File URL"
+                                    },
+                                    {
+                                        "name": "filename",
+                                        "type": "filename",
+                                        "label": "File name"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "sesion"
+                            },
+                            {
+                                "name": "fldEwS4zxasa37Q88",
+                                "type": "text",
+                                "label": "transcripcion"
+                            },
+                            {
+                                "name": "fldtoO68Mjm3bYrSY",
+                                "type": "text",
+                                "label": "Explicacion cumplimiento"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldc6xnVPJIdIVBYn",
+                                "type": "select",
+                                "label": "estado"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Analizar",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Analizar"
+                    },
+                    {
+                        "name": "sesion",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "sesion"
+                    },
+                    {
+                        "name": "transcripcion",
+                        "type": "text",
+                        "label": "transcripcion",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Explicacion cumplimiento",
+                        "type": "text",
+                        "label": "Explicacion cumplimiento",
+                        "multiline": true
+                    },
+                    {
+                        "name": "estado",
+                        "type": "text",
+                        "label": "estado"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "deepgram:prerecorded",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 1517368
+            },
+            "mapper": {
+                "URL": "{{4.sesion[].url}}",
+                "tier": "base",
+                "model": "general",
+                "language": "es"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 777,
+                    "y": -3
+                },
+                "restore": {
+                    "expect": {
+                        "ner": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "tier": {
+                            "mode": "chose",
+                            "label": "Base"
+                        },
+                        "model": {
+                            "mode": "chose",
+                            "label": "general"
+                        },
+                        "redact": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "diarize": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "language": {
+                            "mode": "chose",
+                            "label": "Spanish"
+                        },
+                        "numerals": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "dictation": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "punctuate": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "summarize": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "paragraphs": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "utterances": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "filler_words": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "measurements": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "multichannel": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "smart_format": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "detect_topics": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "detect_language": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "profanity_filter": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "deepgram"
+                            },
+                            "label": "My Deepgram connection"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:deepgram",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "URL",
+                        "type": "url"
+                    },
+                    {
+                        "name": "tier",
+                        "type": "select",
+                        "label": "Tier",
+                        "validate": {
+                            "enum": [
+                                "nova",
+                                "enhanced",
+                                "base"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "detect_language",
+                        "type": "select",
+                        "label": "Detect Language",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "punctuate",
+                        "type": "select",
+                        "label": "Punctuate",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "profanity_filter",
+                        "type": "select",
+                        "label": "Profanity Filter",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "redact",
+                        "type": "select",
+                        "label": "Redact",
+                        "validate": {
+                            "enum": [
+                                "pci",
+                                "pii",
+                                "numbers"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "diarize",
+                        "type": "select",
+                        "label": "Diarize",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "diarize_version",
+                        "type": "text",
+                        "label": "Diarize Version"
+                    },
+                    {
+                        "name": "smart_format",
+                        "type": "select",
+                        "label": "Smart Format",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "filler_words",
+                        "type": "select",
+                        "label": "Filler Words",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "multichannel",
+                        "type": "select",
+                        "label": "Multichannel",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "alternatives",
+                        "type": "number",
+                        "label": "Alternatives"
+                    },
+                    {
+                        "name": "search",
+                        "type": "text",
+                        "label": "Search"
+                    },
+                    {
+                        "name": "replace",
+                        "type": "text",
+                        "label": "Replace"
+                    },
+                    {
+                        "name": "callback",
+                        "type": "url",
+                        "label": "Callback URL"
+                    },
+                    {
+                        "name": "keywords",
+                        "type": "text",
+                        "label": "Keywords"
+                    },
+                    {
+                        "name": "paragraphs",
+                        "type": "select",
+                        "label": "Paragraphs",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "summarize",
+                        "type": "select",
+                        "label": "Summarize",
+                        "validate": {
+                            "enum": [
+                                "v2",
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "detect_topics",
+                        "type": "select",
+                        "label": "Detect Topics",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "utterances",
+                        "type": "select",
+                        "label": "Utterances",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "utt_split",
+                        "type": "number",
+                        "label": "Utterance Split"
+                    },
+                    {
+                        "name": "tag",
+                        "type": "text",
+                        "label": "Tag"
+                    },
+                    {
+                        "name": "numerals",
+                        "type": "select",
+                        "label": "Numerals",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "ner",
+                        "type": "select",
+                        "label": "NER",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "measurements",
+                        "type": "select",
+                        "label": "Measurements",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "dictation",
+                        "type": "select",
+                        "label": "Dictation",
+                        "validate": {
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "validate": {
+                            "enum": [
+                                "general",
+                                "phonecall",
+                                "voicemail",
+                                "meeting",
+                                "finance",
+                                "conversationalai",
+                                "video"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "language",
+                        "type": "select",
+                        "label": "Language",
+                        "validate": {
+                            "enum": [
+                                "en",
+                                "en-AU",
+                                "en-GB",
+                                "en-IN",
+                                "en-NZ",
+                                "en-US",
+                                "es",
+                                "es-419",
+                                "da",
+                                "nl",
+                                "fr",
+                                "fr-CA",
+                                "de",
+                                "hi",
+                                "hi-Latn",
+                                "id",
+                                "it",
+                                "ja",
+                                "ko",
+                                "no",
+                                "pl",
+                                "pt",
+                                "pt-BR",
+                                "pt-PT",
+                                "ru",
+                                "sv",
+                                "ta",
+                                "tr",
+                                "uk",
+                                "zh",
+                                "zh-CN",
+                                "zh-TW"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "module": "airtable:ActionUpdateRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 1517439
+            },
+            "mapper": {
+                "id": "{{3.record_id}}",
+                "base": "appYN4Y8P1RidLDvw",
+                "table": "tbl2gfWs30t8cA3Ts",
+                "record": {
+                    "fldc6xnVPJIdIVBYn": "procesando"
+                },
+                "typecast": false,
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1019,
+                    "y": 1
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "DanicoachAI"
+                        },
+                        "table": {
+                            "label": "gestion de sesiones"
+                        },
+                        "record": {
+                            "nested": {
+                                "fldbOVQ7sYQJ6VTpP": {
+                                    "mode": "chose"
+                                },
+                                "fldc6xnVPJIdIVBYn": {
+                                    "mode": "chose",
+                                    "label": "procesando"
+                                }
+                            }
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable2"
+                            },
+                            "label": "demo"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fldqIsRxBom8jSeed",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "fldbOVQ7sYQJ6VTpP",
+                                "spec": [
+                                    {
+                                        "name": "url",
+                                        "type": "text",
+                                        "label": "File URL"
+                                    },
+                                    {
+                                        "name": "filename",
+                                        "type": "filename",
+                                        "label": "File name"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "sesion"
+                            },
+                            {
+                                "name": "fldEwS4zxasa37Q88",
+                                "type": "text",
+                                "label": "transcripcion"
+                            },
+                            {
+                                "name": "fldtoO68Mjm3bYrSY",
+                                "type": "text",
+                                "label": "Explicacion cumplimiento"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldc6xnVPJIdIVBYn",
+                                "type": "select",
+                                "label": "estado"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "Analizar",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Analizar"
+                    },
+                    {
+                        "name": "sesion",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "sesion"
+                    },
+                    {
+                        "name": "transcripcion",
+                        "type": "text",
+                        "label": "transcripcion",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Explicacion cumplimiento",
+                        "type": "text",
+                        "label": "Explicacion cumplimiento",
+                        "multiline": true
+                    },
+                    {
+                        "name": "estado",
+                        "type": "text",
+                        "label": "estado"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 6,
+            "module": "openai-gpt-3:sendMessageToAssistant",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 1517499
+            },
+            "mapper": {
+                "role": "user",
+                "message": "este es el texto a analizar: {{5.results.channels[].alternatives[].transcript}}",
+                "assistantId": "asst_IloTIzXImZSBCQ8b1A6hs6DD"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1320,
+                    "y": -4
+                },
+                "restore": {
+                    "expect": {
+                        "model": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "tools": {
+                            "mode": "chose"
+                        },
+                        "fileIds": {
+                            "mode": "chose"
+                        },
+                        "assistantId": {
+                            "mode": "chose",
+                            "label": "danielcoach (gpt-3.5-turbo-0125)"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            },
+                            "label": "demo"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "message",
+                        "type": "text",
+                        "label": "Message",
+                        "required": true
+                    },
+                    {
+                        "name": "role",
+                        "type": "hidden",
+                        "label": "Role"
+                    },
+                    {
+                        "name": "assistantId",
+                        "type": "select",
+                        "label": "Assistant",
+                        "required": true
+                    },
+                    {
+                        "name": "threadId",
+                        "type": "text",
+                        "label": "Thread ID"
+                    },
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model"
+                    },
+                    {
+                        "name": "fileIds",
+                        "spec": {
+                            "name": "value",
+                            "type": "select",
+                            "label": "File ID",
+                            "dynamic": true,
+                            "options": []
+                        },
+                        "type": "array",
+                        "label": "File IDs",
+                        "validate": {
+                            "maxItems": 10
+                        }
+                    },
+                    {
+                        "name": "tools",
+                        "type": "select",
+                        "label": "Tools",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "retrieval",
+                                "code_interpreter"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "instructions",
+                        "type": "text",
+                        "label": "Instructions"
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 10,
+            "module": "openai-gpt-3:transformTextToStructuredData",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 1517499
+            },
+            "mapper": {
+                "model": "gpt-4-1106-preview",
+                "prompt": "tu mision es sacar del texto la calificacion/puntuacion en formato de numero sin añadir nada mas, a veces te lo encontraras /10, saca solo el primer numero (por ejemplo 6/10 = 6)",
+                "rawText": "{{6.result}}",
+                "parameters": [
+                    {
+                        "name": "calificacion",
+                        "type": "number",
+                        "isRequired": true,
+                        "description": "tienes que sacar del texto la puntuacion/calificacion en forma de numero sin añadir nada mas, a veces te lo encontraras /10, saca solo el primer numero (por ejemplo 6/10 = 6)",
+                        "valueExamples": [
+                            "2",
+                            "4",
+                            "6",
+                            "8",
+                            "10"
+                        ]
+                    }
+                ]
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1721,
+                    "y": -6
+                },
+                "restore": {
+                    "expect": {
+                        "model": {
+                            "mode": "chose",
+                            "label": "gpt-4-1106-preview (system)"
+                        },
+                        "parameters": {
+                            "mode": "chose",
+                            "items": [
+                                {
+                                    "type": {
+                                        "mode": "chose",
+                                        "label": "Number"
+                                    },
+                                    "isRequired": {
+                                        "mode": "chose"
+                                    },
+                                    "valueExamples": {
+                                        "mode": "chose",
+                                        "items": [
+                                            null,
+                                            null,
+                                            null,
+                                            null,
+                                            null
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "objectDefinitions": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            },
+                            "label": "demo"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true
+                    },
+                    {
+                        "name": "rawText",
+                        "type": "text",
+                        "label": "Text to Parse",
+                        "required": true
+                    },
+                    {
+                        "name": "prompt",
+                        "type": "text",
+                        "label": "Prompt",
+                        "required": true
+                    },
+                    {
+                        "name": "parameters",
+                        "spec": {
+                            "name": "value",
+                            "spec": [],
+                            "type": "collection",
+                            "label": "Data Definition"
+                        },
+                        "type": "array",
+                        "label": "Structured Data Definition",
+                        "required": true
+                    },
+                    {
+                        "name": "objectDefinitions",
+                        "spec": {
+                            "name": "value",
+                            "spec": [
+                                {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Object Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "description",
+                                    "type": "text",
+                                    "label": "Description",
+                                    "required": true
+                                },
+                                {
+                                    "name": "properties",
+                                    "spec": {
+                                        "spec": [],
+                                        "type": "collection",
+                                        "label": "Property"
+                                    },
+                                    "type": "array",
+                                    "label": "Properties",
+                                    "labels": {
+                                        "add": "Add property"
+                                    },
+                                    "required": true
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Object Definition"
+                        },
+                        "type": "array",
+                        "label": "Object Definitions"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "calificacion",
+                        "type": "number"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "module": "airtable:ActionUpdateRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 1517439
+            },
+            "mapper": {
+                "id": "{{3.record_id}}",
+                "base": "appYN4Y8P1RidLDvw",
+                "table": "tbl2gfWs30t8cA3Ts",
+                "record": {
+                    "fldBud6ThBYTetP7L": "{{10.calificacion}}",
+                    "fldEwS4zxasa37Q88": "{{5.results.channels[].alternatives[].transcript}}",
+                    "fldc6xnVPJIdIVBYn": "corregido",
+                    "fldtoO68Mjm3bYrSY": "{{6.content[].text.value}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 2181,
+                    "y": -11
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "DanicoachAI"
+                        },
+                        "table": {
+                            "label": "gestion de sesiones"
+                        },
+                        "record": {
+                            "nested": {
+                                "fldbOVQ7sYQJ6VTpP": {
+                                    "mode": "chose"
+                                },
+                                "fldc6xnVPJIdIVBYn": {
+                                    "mode": "chose",
+                                    "label": "corregido"
+                                },
+                                "fldoQy0br3QMrpa5N": {
+                                    "mode": "chose"
+                                }
+                            }
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable2"
+                            },
+                            "label": "demo"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fldqIsRxBom8jSeed",
+                                "type": "text",
+                                "label": "titulo llamada"
+                            },
+                            {
+                                "name": "fldbOVQ7sYQJ6VTpP",
+                                "spec": [
+                                    {
+                                        "name": "url",
+                                        "type": "text",
+                                        "label": "File URL"
+                                    },
+                                    {
+                                        "name": "filename",
+                                        "type": "filename",
+                                        "label": "File name"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "sesion"
+                            },
+                            {
+                                "name": "fldoQy0br3QMrpa5N",
+                                "spec": {
+                                    "name": "value",
+                                    "label": "Record ID"
+                                },
+                                "type": "array",
+                                "label": "nombre alumno"
+                            },
+                            {
+                                "name": "fldMITprlUnPkiDQo",
+                                "type": "text",
+                                "label": "Correo electrónico"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldc6xnVPJIdIVBYn",
+                                "type": "select",
+                                "label": "estado"
+                            },
+                            {
+                                "name": "fldEwS4zxasa37Q88",
+                                "type": "text",
+                                "label": "transcripcion"
+                            },
+                            {
+                                "name": "fldtoO68Mjm3bYrSY",
+                                "type": "text",
+                                "label": "Explicacion cumplimiento"
+                            },
+                            {
+                                "name": "fldBud6ThBYTetP7L",
+                                "type": "number",
+                                "label": "calificacion"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "titulo llamada",
+                        "type": "text",
+                        "label": "titulo llamada"
+                    },
+                    {
+                        "name": "Analizar",
+                        "spec": [
+                            {
+                                "name": "label",
+                                "type": "text",
+                                "label": "Label"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Analizar"
+                    },
+                    {
+                        "name": "sesion",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "sesion"
+                    },
+                    {
+                        "name": "nombre alumno",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "nombre alumno"
+                    },
+                    {
+                        "name": "Correo electrónico",
+                        "type": "text",
+                        "label": "Correo electrónico"
+                    },
+                    {
+                        "name": "estado",
+                        "type": "text",
+                        "label": "estado"
+                    },
+                    {
+                        "name": "transcripcion",
+                        "type": "text",
+                        "label": "transcripcion",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Explicacion cumplimiento",
+                        "type": "text",
+                        "label": "Explicacion cumplimiento",
+                        "multiline": true
+                    },
+                    {
+                        "name": "calificacion",
+                        "type": "number",
+                        "label": "calificacion"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com"
+    }
+}
